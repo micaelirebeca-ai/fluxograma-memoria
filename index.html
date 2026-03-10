@@ -46,13 +46,18 @@ border-radius:8px;
 font-weight:bold;
 font-size:16px;
 width:100%;
-max-width:300px;
+max-width:320px;
 display:block;
 }
 
 .sim{background:#2f9e44;color:white;}
 .nao{background:#e03131;color:white;}
 .proximo{background:#1c6ed5;color:white;}
+
+label{
+display:block;
+margin:6px 0;
+}
 
 </style>
 </head>
@@ -74,27 +79,24 @@ Iniciar avaliação
 </div>
 
 
-<div class="card" id="step4">
 
-<h3>Testes cognitivos</h3>
+<div class="card" id="step2">
 
-<button class="proximo" onclick="nextStep('meem')">
-Abrir MEEM
-</button>
+<h3>Avaliação clínica</h3>
 
-<button class="proximo" onclick="nextStep('relogio')">
-Teste do relógio
-</button>
+<ul>
+<li>Início dos sintomas</li>
+<li>Progressão</li>
+<li>Impacto funcional</li>
+<li>Informações do cuidador</li>
+</ul>
 
-<button class="proximo" onclick="nextStep('fluencia')">
-Fluência verbal
-</button>
-
-<button class="proximo" onclick="nextStep('step5')">
-Continuar fluxograma
+<button class="proximo" onclick="nextStep('step3')">
+Próximo
 </button>
 
 </div>
+
 
 
 <div class="card" id="step3">
@@ -115,41 +117,111 @@ Aplicar testes cognitivos
 </div>
 
 
+
 <div class="card" id="step4">
 
 <h3>Testes cognitivos</h3>
 
-<ul>
-<li>MEEM</li>
-<li>Teste do relógio</li>
-<li>Fluência verbal</li>
-</ul>
+<button class="proximo" onclick="nextStep('meem')">
+MEEM
+</button>
+
+<button class="proximo" onclick="nextStep('relogio')">
+Teste do relógio
+</button>
+
+<button class="proximo" onclick="nextStep('fluencia')">
+Fluência verbal
+</button>
 
 <button class="proximo" onclick="nextStep('step5')">
-Continuar
+Continuar fluxograma
 </button>
 
 </div>
+
+
+
+<div class="card" id="meem">
+
+<h3>Mini Exame do Estado Mental (MEEM)</h3>
+
+<p>Marque os itens realizados:</p>
+
+<label><input type="checkbox"> Orientação temporal</label>
+<label><input type="checkbox"> Orientação espacial</label>
+<label><input type="checkbox"> Registro de 3 palavras</label>
+<label><input type="checkbox"> Atenção e cálculo</label>
+<label><input type="checkbox"> Recordação das palavras</label>
+<label><input type="checkbox"> Linguagem</label>
+<label><input type="checkbox"> Comando em três etapas</label>
+
+<button class="proximo" onclick="nextStep('step4')">
+Voltar
+</button>
+
+</div>
+
+
+
+<div class="card" id="relogio">
+
+<h3>Teste do relógio</h3>
+
+<ul>
+<li>Pedir para desenhar um relógio</li>
+<li>Colocar todos os números</li>
+<li>Marcar horário solicitado</li>
+</ul>
+
+<button class="proximo" onclick="nextStep('step4')">
+Voltar
+</button>
+
+</div>
+
+
+
+<div class="card" id="fluencia">
+
+<h3>Fluência verbal</h3>
+
+<p>Solicitar que o paciente diga o maior número possível de animais em 1 minuto.</p>
+
+<p>Normal ≥ 12 palavras.</p>
+
+<button class="proximo" onclick="nextStep('step4')">
+Voltar
+</button>
+
+</div>
+
 
 
 <div class="card" id="step5">
 
 <h3>Testes cognitivos alterados?</h3>
 
-<button class="sim" onclick="nextStep('step6')">SIM</button>
+<button class="sim" onclick="nextStep('step6')">
+SIM
+</button>
 
-<button class="nao" onclick="nextStep('step7')">NÃO</button>
+<button class="nao" onclick="nextStep('step7')">
+NÃO
+</button>
 
 </div>
+
 
 
 <div class="card" id="step6">
 
-<h3>Comprometimento Cognitivo Leve / Demência</h3>
+<h3>Comprometimento Cognitivo</h3>
 
 <p>Avaliar funcionalidade e progressão.</p>
 
 </div>
+
 
 
 <div class="card" id="step7">
@@ -161,6 +233,7 @@ Continuar
 </div>
 
 </div>
+
 
 
 <script>
@@ -182,62 +255,8 @@ next.classList.add("active");
 window.scrollTo(0,0);
 
 }
-<div class="card" id="meem">
 
-<h3>Mini Exame do Estado Mental (MEEM)</h3>
-
-<p>Marque os itens realizados:</p>
-
-<label><input type="checkbox"> Orientação temporal</label><br>
-<label><input type="checkbox"> Orientação espacial</label><br>
-<label><input type="checkbox"> Registro de 3 palavras</label><br>
-<label><input type="checkbox"> Atenção e cálculo</label><br>
-<label><input type="checkbox"> Recordação das palavras</label><br>
-<label><input type="checkbox"> Linguagem</label><br>
-<label><input type="checkbox"> Comando em 3 etapas</label><br>
-
-<button class="proximo" onclick="nextStep('step4')">
-Voltar
-</button>
-
-</div>
-
-
-
-<div class="card" id="relogio">
-
-<h3>Teste do Relógio</h3>
-
-<ul>
-<li>Solicitar desenho de relógio</li>
-<li>Colocar todos os números</li>
-<li>Marcar horário solicitado</li>
-</ul>
-
-<button class="proximo" onclick="nextStep('step4')">
-Voltar
-</button>
-
-</div>
-
-
-
-<div class="card" id="fluencia">
-
-<h3>Fluência verbal</h3>
-
-<p>Peça para o paciente falar o maior número possível de animais em 1 minuto.</p>
-
-<p>Normal ≥ 12 palavras.</p>
-
-<button class="proximo" onclick="nextStep('step4')">
-Voltar
-</button>
-
-</div>
 </script>
 
 </body>
 </html>
-
-
