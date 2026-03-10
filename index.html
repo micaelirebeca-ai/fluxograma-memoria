@@ -2,10 +2,11 @@
 <html lang="pt-br">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fluxograma – Idoso com Esquecimento</title>
+<title>Fluxograma – Avaliação de Esquecimento no Idoso</title>
 
 <style>
 
@@ -21,7 +22,7 @@ color:#0b4fa3;
 }
 
 .container{
-max-width:700px;
+max-width:800px;
 margin:auto;
 }
 
@@ -50,27 +51,40 @@ max-width:320px;
 display:block;
 }
 
+.proximo{background:#1c6ed5;color:white;}
 .sim{background:#2f9e44;color:white;}
 .nao{background:#e03131;color:white;}
-.proximo{background:#1c6ed5;color:white;}
 
 label{
 display:block;
 margin:6px 0;
 }
 
+.resultado{
+margin-top:20px;
+padding:10px;
+background:#eef3ff;
+border-radius:8px;
+}
+
 </style>
+
 </head>
 
 <body>
 
-<h1>Fluxograma – Idoso com Esquecimento</h1>
+<h1>Abordagem do Idoso com Queixa de Esquecimento</h1>
 
 <div class="container">
 
+
 <div class="card active" id="step1">
 
-<h3>1. Idoso com queixa de esquecimento</h3>
+<h3>1. Queixa de memória</h3>
+
+<p>
+Todo idoso com queixa de memória deve iniciar avaliação clínica estruturada.
+</p>
 
 <button class="proximo" onclick="nextStep('step2')">
 Iniciar avaliação
@@ -79,35 +93,36 @@ Iniciar avaliação
 </div>
 
 
-
 <div class="card" id="step2">
 
-<h3>Avaliação clínica</h3>
+<h3>2. História clínica detalhada</h3>
 
 <ul>
 <li>Início dos sintomas</li>
-<li>Progressão</li>
-<li>Impacto funcional</li>
-<li>Informações do cuidador</li>
+<li>Progressão (lenta ou abrupta)</li>
+<li>Impacto nas atividades da vida diária</li>
+<li>Relato do familiar ou cuidador</li>
+<li>Revisão de medicações</li>
+<li>Investigação de sintomas depressivos</li>
 </ul>
 
 <button class="proximo" onclick="nextStep('step3')">
-Próximo
+Continuar
 </button>
 
 </div>
 
 
-
 <div class="card" id="step3">
 
-<h3>Sinais de alerta</h3>
+<h3>3. Avaliar sinais de alerta</h3>
 
 <ul>
-<li>Repetir perguntas</li>
-<li>Perder objetos</li>
+<li>Repetição de perguntas</li>
+<li>Perda frequente de objetos</li>
 <li>Dificuldade em tarefas habituais</li>
 <li>Desorientação espacial</li>
+<li>Alterações comportamentais</li>
 </ul>
 
 <button class="proximo" onclick="nextStep('step4')">
@@ -117,22 +132,46 @@ Aplicar testes cognitivos
 </div>
 
 
-
 <div class="card" id="step4">
 
-<h3>Testes cognitivos</h3>
+<h3>4. Testes cognitivos</h3>
 
 <button class="proximo" onclick="nextStep('meem')">
-MEEM
+Aplicar MEEM
 </button>
 
-<button class="proximo" onclick="nextStep('relogio')">
-Teste do relógio
+<button class="proximo" onclick="nextStep('step5')">
+Pular para decisão clínica
 </button>
 
-<button class="proximo" onclick="nextStep('fluencia')">
-Fluência verbal
+</div>
+
+
+<div class="card" id="meem">
+
+<h3>Mini Exame do Estado Mental (MEEM)</h3>
+
+<p>Marque os itens corretos.</p>
+
+<label><input type="checkbox" value="5"> Orientação temporal (5 pontos)</label>
+
+<label><input type="checkbox" value="5"> Orientação espacial (5 pontos)</label>
+
+<label><input type="checkbox" value="3"> Registro de 3 palavras (3 pontos)</label>
+
+<label><input type="checkbox" value="5"> Atenção e cálculo (5 pontos)</label>
+
+<label><input type="checkbox" value="3"> Recordação das palavras (3 pontos)</label>
+
+<label><input type="checkbox" value="8"> Linguagem e comandos (8 pontos)</label>
+
+<label><input type="checkbox" value="1"> Copiar desenho (1 ponto)</label>
+
+<button class="proximo" onclick="calcularMEEM()">
+Calcular pontuação
 </button>
+
+<div id="resultadoMEEM" class="resultado"></div>
 
 <button class="proximo" onclick="nextStep('step5')">
 Continuar fluxograma
@@ -141,66 +180,9 @@ Continuar fluxograma
 </div>
 
 
-
-<div class="card" id="meem">
-
-<h3>Mini Exame do Estado Mental (MEEM)</h3>
-
-<p>Marque os itens realizados:</p>
-
-<label><input type="checkbox"> Orientação temporal</label>
-<label><input type="checkbox"> Orientação espacial</label>
-<label><input type="checkbox"> Registro de 3 palavras</label>
-<label><input type="checkbox"> Atenção e cálculo</label>
-<label><input type="checkbox"> Recordação das palavras</label>
-<label><input type="checkbox"> Linguagem</label>
-<label><input type="checkbox"> Comando em três etapas</label>
-
-<button class="proximo" onclick="nextStep('step4')">
-Voltar
-</button>
-
-</div>
-
-
-
-<div class="card" id="relogio">
-
-<h3>Teste do relógio</h3>
-
-<ul>
-<li>Pedir para desenhar um relógio</li>
-<li>Colocar todos os números</li>
-<li>Marcar horário solicitado</li>
-</ul>
-
-<button class="proximo" onclick="nextStep('step4')">
-Voltar
-</button>
-
-</div>
-
-
-
-<div class="card" id="fluencia">
-
-<h3>Fluência verbal</h3>
-
-<p>Solicitar que o paciente diga o maior número possível de animais em 1 minuto.</p>
-
-<p>Normal ≥ 12 palavras.</p>
-
-<button class="proximo" onclick="nextStep('step4')">
-Voltar
-</button>
-
-</div>
-
-
-
 <div class="card" id="step5">
 
-<h3>Testes cognitivos alterados?</h3>
+<h3>5. Teste cognitivo alterado?</h3>
 
 <button class="sim" onclick="nextStep('step6')">
 SIM
@@ -213,46 +195,74 @@ NÃO
 </div>
 
 
-
 <div class="card" id="step6">
 
 <h3>Comprometimento Cognitivo</h3>
 
-<p>Avaliar funcionalidade e progressão.</p>
+<ul>
+<li>Avaliar funcionalidade (AVDs)</li>
+<li>Investigar causas reversíveis</li>
+<li>Solicitar exames laboratoriais</li>
+<li>Considerar encaminhamento para neurologia ou geriatria</li>
+</ul>
 
 </div>
-
 
 
 <div class="card" id="step7">
 
 <h3>Declínio Cognitivo Subjetivo</h3>
 
-<p>Monitorar evolução.</p>
+<ul>
+<li>Testes normais</li>
+<li>Sem impacto funcional</li>
+<li>Acompanhamento periódico</li>
+</ul>
 
 </div>
 
 </div>
-
 
 
 <script>
 
 function nextStep(step){
 
-const cards = document.querySelectorAll(".card");
-
-cards.forEach(function(card){
+document.querySelectorAll(".card").forEach(card=>{
 card.classList.remove("active");
 });
 
-const next = document.getElementById(step);
-
-if(next){
-next.classList.add("active");
-}
+document.getElementById(step).classList.add("active");
 
 window.scrollTo(0,0);
+
+}
+
+
+
+function calcularMEEM(){
+
+let total = 0;
+
+document.querySelectorAll('#meem input[type="checkbox"]:checked')
+.forEach(cb=>{
+total += parseInt(cb.value);
+});
+
+let resultado = "";
+
+if(total >= 24){
+resultado = "Cognição dentro da normalidade.";
+}
+else if(total >= 18){
+resultado = "Possível comprometimento cognitivo leve.";
+}
+else{
+resultado = "Sugere comprometimento cognitivo significativo.";
+}
+
+document.getElementById("resultadoMEEM").innerHTML =
+"<b>Pontuação:</b> " + total + "/30 <br><b>Interpretação:</b> " + resultado;
 
 }
 
