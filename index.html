@@ -182,9 +182,62 @@ next.classList.add("active");
 window.scrollTo(0,0);
 
 }
+<div class="card" id="meem">
 
+<h3>Mini Exame do Estado Mental (MEEM)</h3>
+
+<p>Marque os itens realizados:</p>
+
+<label><input type="checkbox"> Orientação temporal</label><br>
+<label><input type="checkbox"> Orientação espacial</label><br>
+<label><input type="checkbox"> Registro de 3 palavras</label><br>
+<label><input type="checkbox"> Atenção e cálculo</label><br>
+<label><input type="checkbox"> Recordação das palavras</label><br>
+<label><input type="checkbox"> Linguagem</label><br>
+<label><input type="checkbox"> Comando em 3 etapas</label><br>
+
+<button class="proximo" onclick="nextStep('step4')">
+Voltar
+</button>
+
+</div>
+
+
+
+<div class="card" id="relogio">
+
+<h3>Teste do Relógio</h3>
+
+<ul>
+<li>Solicitar desenho de relógio</li>
+<li>Colocar todos os números</li>
+<li>Marcar horário solicitado</li>
+</ul>
+
+<button class="proximo" onclick="nextStep('step4')">
+Voltar
+</button>
+
+</div>
+
+
+
+<div class="card" id="fluencia">
+
+<h3>Fluência verbal</h3>
+
+<p>Peça para o paciente falar o maior número possível de animais em 1 minuto.</p>
+
+<p>Normal ≥ 12 palavras.</p>
+
+<button class="proximo" onclick="nextStep('step4')">
+Voltar
+</button>
+
+</div>
 </script>
 
 </body>
 </html>
+
 
