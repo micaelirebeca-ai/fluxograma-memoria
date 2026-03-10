@@ -4,17 +4,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Teste</title>
+
+<title>Fluxograma – Idoso com Esquecimento</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6fb;
+padding:20px;
+}
+
+h1{
+text-align:center;
+color:#0b4fa3;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+display:none;
+}
+
+.card.active{
+display:block;
+}
+
+button{
+padding:14px;
+margin:10px auto;
+border:none;
+border-radius:8px;
+font-weight:bold;
+font-size:16px;
+width:100%;
+max-width:300px;
+display:block;
+}
+
+.sim{background:#2f9e44;color:white;}
+.nao{background:#e03131;color:white;}
+.proximo{background:#1c6ed5;color:white;}
+
+</style>
 </head>
 
 <body>
 
-<h1>Fluxograma funcionando</h1>
+<h1>Fluxograma – Idoso com Esquecimento</h1>
 
-<button onclick="alert('Funcionou!')">
-Testar botão
+<div class="container">
+
+<div class="card active" id="step1">
+
+<h3>1. Idoso com queixa de esquecimento</h3>
+
+<button class="proximo" onclick="nextStep('step2')">
+Iniciar avaliação
 </button>
 
-</body>
+</div>
 
+
+<div class="card" id="step2">
+
+<h3>Avaliação clínica</h3>
+
+<ul>
+<li>Início dos sintomas</li>
+<li>Progressão</li>
+<li>Impacto funcional</li>
+<li>Informações do cuidador</li>
+</ul>
+
+<button class="proximo" onclick="nextStep('step3')">
+Próximo
+</button>
+
+</div>
+
+
+<div class="card" id="step3">
+
+<h3>Sinais de alerta</h3>
+
+<ul>
+<li>Repetir perguntas</li>
+<li>Perder objetos</li>
+<li>Dificuldade em tarefas habituais</li>
+<li>Desorientação espacial</li>
+</ul>
+
+<button class="proximo" onclick="nextStep('step4')">
+Aplicar testes cognitivos
+</button>
+
+</div>
+
+
+<div class="card" id="step4">
+
+<h3>Testes cognitivos</h3>
+
+<ul>
+<li>MEEM</li>
+<li>Teste do relógio</li>
+<li>Fluência verbal</li>
+</ul>
+
+<button class="proximo" onclick="nextStep('step5')">
+Continuar
+</button>
+
+</div>
+
+
+<div class="card" id="step5">
+
+<h3>Testes cognitivos alterados?</h3>
+
+<button class="sim" onclick="nextStep('step6')">SIM</button>
+
+<button class="nao" onclick="nextStep('step7')">NÃO</button>
+
+</div>
+
+
+<div class="card" id="step6">
+
+<h3>Comprometimento Cognitivo Leve / Demência</h3>
+
+<p>Avaliar funcionalidade e progressão.</p>
+
+</div>
+
+
+<div class="card" id="step7">
+
+<h3>Declínio Cognitivo Subjetivo</h3>
+
+<p>Monitorar evolução.</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+function nextStep(step){
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(function(card){
+card.classList.remove("active");
+});
+
+const next = document.getElementById(step);
+
+if(next){
+next.classList.add("active");
+}
+
+window.scrollTo(0,0);
+
+}
+
+</script>
+
+</body>
 </html>
