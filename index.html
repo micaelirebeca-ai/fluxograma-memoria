@@ -1,108 +1,22 @@
-<!DOCTYPE html>
+<script>
 
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fluxograma – Idoso com Esquecimento</title>
+function next(step){
 
-<style>
+const cards = document.querySelectorAll(".card");
 
-body{
-font-family:Arial;
-background:#f4f6fb;
-padding:40px;
+cards.forEach(function(card){
+card.classList.remove("active");
+});
+
+const nextCard = document.getElementById(step);
+
+if(nextCard){
+nextCard.classList.add("active");
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 }
 
-h1{
-text-align:center;
-color:#0b4fa3;
 }
-
-.container{
-max-width:800px;
-margin:auto;
-}
-
-.card{
-background:white;
-padding:20px;
-margin-top:20px;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
-display:none;
-}
-
-.card.active{
-display:block;
-}
-
-button{
-button{
-padding:16px;
-margin:10px auto;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:bold;
-font-size:16px;
-width:100%;
-max-width:320px;
-display:block;
-}
-.sim{
-background:#2f9e44;
-color:white;
-}
-
-.nao{
-background:#e03131;
-color:white;
-}
-
-.proximo{
-background:#1c6ed5;
-color:white;
-}
-
-ul{
-margin-top:10px;
-}
-
-.teste{
-background:#f8f9fa;
-padding:15px;
-border-radius:8px;
-margin-top:15px;
-}
-
-label{
-display:block;
-margin:5px 0;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<h1>Fluxograma – Abordagem ao Idoso com Esquecimento</h1>
-
-<div class="container">
-
-<div class="card active" id="step1">
-<h3>1. Idoso com queixa de esquecimento</h3>
-<p>Iniciar avaliação clínica.</p>
-<button class="proximo" onclick="next('step2')">Iniciar avaliação</button>
-</div>
-
-<div class="card" id="step2">
-<h3>2. Avaliação clínica inicial</h3>
-
-<ul>
-<li>Início dos sintomas</li>
-<li>Progressão</li>
-<li>Impacto nas atividades da vida diária</li>
-<li>Informações do familiar/cui
 
