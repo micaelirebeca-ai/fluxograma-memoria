@@ -82,8 +82,6 @@ border-radius:8px;
 
 <h3>Paciente idoso com queixa de esquecimento</h3>
 
-<p>Realizar avaliação clínica estruturada.</p>
-
 <button class="proximo" onclick="nextStep('historia')">
 Iniciar avaliação
 </button>
@@ -99,127 +97,19 @@ Iniciar avaliação
 <li>Início dos sintomas</li>
 <li>Progressão</li>
 <li>Impacto funcional</li>
-<li>Informações do cuidador</li>
+<li>Relato do cuidador</li>
 <li>Uso de medicações</li>
 <li>Sintomas depressivos</li>
 </ul>
 
-<button class="proximo" onclick="nextStep('testes')">
-Aplicar testes cognitivos
+<button class="proximo" onclick="nextStep('dementia')">
+Investigar causas reversíveis
 </button>
 
 </div>
 
 
-<div class="card" id="testes">
-
-<h3>Testes Cognitivos</h3>
-
-<button class="proximo" onclick="nextStep('meem')">MEEM</button>
-
-<button class="proximo" onclick="nextStep('relogio')">Teste do Relógio</button>
-
-<button class="proximo" onclick="nextStep('fluencia')">Fluência Verbal</button>
-
-<button class="proximo" onclick="nextStep('pfeffer')">Escala de Pfeffer</button>
-
-<button class="proximo" onclick="nextStep('interpretacao')">
-Continuar avaliação
-</button>
-
-</div>
-
-
-<div class="card" id="meem">
-
-<h3>Mini Exame do Estado Mental (MEEM)</h3>
-
-<label><input type="checkbox" value="5"> Orientação temporal (5)</label>
-<label><input type="checkbox" value="5"> Orientação espacial (5)</label>
-<label><input type="checkbox" value="3"> Registro de palavras (3)</label>
-<label><input type="checkbox" value="5"> Atenção / cálculo (5)</label>
-<label><input type="checkbox" value="3"> Recordação (3)</label>
-<label><input type="checkbox" value="8"> Linguagem (8)</label>
-<label><input type="checkbox" value="1"> Copiar desenho (1)</label>
-
-<button class="proximo" onclick="calcularMEEM()">Calcular pontuação</button>
-
-<div id="resultadoMEEM" class="resultado"></div>
-
-<button class="proximo" onclick="nextStep('testes')">Voltar</button>
-
-</div>
-
-
-<div class="card" id="relogio">
-
-<h3>Teste do Relógio</h3>
-
-<p>Solicitar que o paciente desenhe um relógio com horário específico.</p>
-
-<ul>
-<li>Números corretos</li>
-<li>Distribuição adequada</li>
-<li>Ponteiros corretos</li>
-</ul>
-
-<p>Alterações sugerem comprometimento executivo.</p>
-
-<button class="proximo" onclick="nextStep('testes')">Voltar</button>
-
-</div>
-
-
-<div class="card" id="fluencia">
-
-<h3>Fluência Verbal</h3>
-
-<p>Dizer o máximo de animais em 1 minuto.</p>
-
-<ul>
-<li>Normal: ≥ 12 palavras</li>
-<li>Alterado: < 12</li>
-</ul>
-
-<button class="proximo" onclick="nextStep('testes')">Voltar</button>
-
-</div>
-
-
-<div class="card" id="pfeffer">
-
-<h3>Escala de Pfeffer (funcionalidade)</h3>
-
-<p>Avalia impacto funcional.</p>
-
-<label><input type="checkbox" value="1"> Dificuldade em pagar contas</label>
-<label><input type="checkbox" value="1"> Dificuldade em preparar refeições</label>
-<label><input type="checkbox" value="1"> Dificuldade em lembrar compromissos</label>
-<label><input type="checkbox" value="1"> Dificuldade em usar telefone</label>
-
-<button class="proximo" onclick="calcularPfeffer()">
-Calcular
-</button>
-
-<div id="resultadoPfeffer" class="resultado"></div>
-
-<button class="proximo" onclick="nextStep('testes')">Voltar</button>
-
-</div>
-
-
-<div class="card" id="interpretacao">
-
-<h3>Testes alterados?</h3>
-
-<button class="sim" onclick="nextStep('investigar')">SIM</button>
-
-<button class="nao" onclick="nextStep('normal')">NÃO</button>
-
-</div>
-
-
-<div class="card" id="investigar">
+<div class="card" id="dementia">
 
 <h3>Investigar causas reversíveis</h3>
 
@@ -272,7 +162,7 @@ Calcular
 <li>alcoolismo crônico</li>
 </ul>
 
-<p><b>Exames iniciais:</b></p>
+<h4>Exames iniciais</h4>
 
 <ul>
 <li>TSH</li>
@@ -284,23 +174,110 @@ Calcular
 <li>TC ou RM de crânio</li>
 </ul>
 
+<button class="proximo" onclick="nextStep('testes')">
+Aplicar testes cognitivos
+</button>
+
 </div>
 
 
-<div class="card" id="normal">
+<div class="card" id="testes">
 
-<h3>Declínio cognitivo subjetivo</h3>
+<h3>Testes Cognitivos</h3>
+
+<button class="proximo" onclick="nextStep('meem')">MEEM</button>
+
+<button class="proximo" onclick="nextStep('relogio')">Teste do Relógio</button>
+
+<button class="proximo" onclick="nextStep('fluencia')">Fluência Verbal</button>
+
+<button class="proximo" onclick="nextStep('pfeffer')">Escala de Pfeffer</button>
+
+<button class="proximo" onclick="nextStep('interpretacao')">
+Continuar avaliação
+</button>
+
+</div>
+
+
+<div class="card" id="meem">
+
+<h3>Mini Exame do Estado Mental</h3>
+
+<label><input type="checkbox" value="5"> Orientação temporal (5)</label>
+<label><input type="checkbox" value="5"> Orientação espacial (5)</label>
+<label><input type="checkbox" value="3"> Registro de palavras (3)</label>
+<label><input type="checkbox" value="5"> Atenção / cálculo (5)</label>
+<label><input type="checkbox" value="3"> Recordação (3)</label>
+<label><input type="checkbox" value="8"> Linguagem (8)</label>
+<label><input type="checkbox" value="1"> Copiar desenho (1)</label>
+
+<button class="proximo" onclick="calcularMEEM()">Calcular</button>
+
+<div id="resultadoMEEM" class="resultado"></div>
+
+<button class="proximo" onclick="nextStep('testes')">Voltar</button>
+
+</div>
+
+
+<div class="card" id="relogio">
+
+<h3>Teste do Relógio</h3>
+
+<p>Pedir para desenhar relógio com horário específico.</p>
+
+<button class="proximo" onclick="nextStep('testes')">Voltar</button>
+
+</div>
+
+
+<div class="card" id="fluencia">
+
+<h3>Fluência Verbal</h3>
+
+<p>Dizer o máximo de animais em 1 minuto.</p>
 
 <ul>
-<li>Testes normais</li>
-<li>Sem perda funcional</li>
-<li>Acompanhamento anual</li>
+<li>Normal ≥ 12</li>
+<li>Alterado < 12</li>
 </ul>
 
-</div>
+<button class="proximo" onclick="nextStep('testes')">Voltar</button>
 
 </div>
 
+
+<div class="card" id="pfeffer">
+
+<h3>Escala de Pfeffer</h3>
+
+<label><input type="checkbox" value="1"> Dificuldade em pagar contas</label>
+<label><input type="checkbox" value="1"> Esquecimento de compromissos</label>
+<label><input type="checkbox" value="1"> Dificuldade com telefone</label>
+<label><input type="checkbox" value="1"> Dificuldade preparar refeições</label>
+
+<button class="proximo" onclick="calcularPfeffer()">Calcular</button>
+
+<div id="resultadoPfeffer" class="resultado"></div>
+
+<button class="proximo" onclick="nextStep('testes')">Voltar</button>
+
+</div>
+
+
+<div class="card" id="interpretacao">
+
+<h3>Testes alterados?</h3>
+
+<button class="sim">SIM</button>
+
+<button class="nao">NÃO</button>
+
+</div>
+
+
+</div>
 
 
 <script>
@@ -321,22 +298,22 @@ window.scrollTo(0,0);
 
 function calcularMEEM(){
 
-let total = 0;
+let total=0;
 
 document.querySelectorAll('#meem input:checked').forEach(cb=>{
-total += parseInt(cb.value);
+total+=parseInt(cb.value);
 });
 
 let texto="";
 
 if(total>=24){
-texto="Cognição preservada.";
+texto="Cognição preservada";
 }
 else if(total>=18){
-texto="Possível comprometimento cognitivo leve.";
+texto="Possível comprometimento cognitivo leve";
 }
 else{
-texto="Sugere demência.";
+texto="Sugere demência";
 }
 
 document.getElementById("resultadoMEEM").innerHTML=
@@ -357,10 +334,10 @@ total+=parseInt(cb.value);
 let texto="";
 
 if(total>=3){
-texto="Sugere perda funcional.";
+texto="Sugere perda funcional";
 }
 else{
-texto="Sem perda funcional significativa.";
+texto="Sem perda funcional significativa";
 }
 
 document.getElementById("resultadoPfeffer").innerHTML=
@@ -372,3 +349,4 @@ document.getElementById("resultadoPfeffer").innerHTML=
 
 </body>
 </html>
+
