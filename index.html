@@ -21,6 +21,15 @@ text-align:center;
 color:#0b4fa3;
 }
 
+.capa{
+text-align:center;
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:20px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
 .container{
 max-width:800px;
 margin:auto;
@@ -75,8 +84,21 @@ border-radius:8px;
 
 <h1>Abordagem do Idoso com Queixa de Memória</h1>
 
-<div class="container">
+<div class="capa">
 
+<h2>Disciplina: Saúde da Família VIII</h2>
+
+<p><b>Professora:</b> Cleoneide</p>
+
+<p><b>Equipe 3</b></p>
+
+<p>Juliana Bruna</p>
+<p>Micaeli Rebeca</p>
+<p>Raphael Medeiros</p>
+
+</div>
+
+<div class="container">
 
 <div class="card active" id="inicio">
 
@@ -87,7 +109,6 @@ Iniciar avaliação
 </button>
 
 </div>
-
 
 <div class="card" id="historia">
 
@@ -107,7 +128,6 @@ Investigar causas reversíveis
 </button>
 
 </div>
-
 
 <div class="card" id="dementia">
 
@@ -137,26 +157,27 @@ Investigar causas reversíveis
 <b>E – Endocrine</b>
 <ul>
 <li>hipotireoidismo</li>
-<li>distúrbios hormonais</li>
 </ul>
 
-<b>N – Normal pressure hydrocephalus</b>
+<b>N – Hidrocefalia de pressão normal</b>
 <ul>
-<li>tríade: demência + marcha magnética + incontinência</li>
+<li>demência</li>
+<li>marcha magnética</li>
+<li>incontinência urinária</li>
 </ul>
 
-<b>T – Tumors</b>
+<b>T – Tumores</b>
 <ul>
 <li>tumores cerebrais</li>
 </ul>
 
-<b>I – Infections</b>
+<b>I – Infecções</b>
 <ul>
 <li>HIV</li>
 <li>neurossífilis</li>
 </ul>
 
-<b>A – Anemia / Alcohol</b>
+<b>A – Anemia / Álcool</b>
 <ul>
 <li>anemia</li>
 <li>alcoolismo crônico</li>
@@ -180,7 +201,6 @@ Aplicar testes cognitivos
 
 </div>
 
-
 <div class="card" id="testes">
 
 <h3>Testes Cognitivos</h3>
@@ -198,7 +218,6 @@ Continuar avaliação
 </button>
 
 </div>
-
 
 <div class="card" id="meem">
 
@@ -220,17 +239,15 @@ Continuar avaliação
 
 </div>
 
-
 <div class="card" id="relogio">
 
 <h3>Teste do Relógio</h3>
 
-<p>Pedir para desenhar relógio com horário específico.</p>
+<p>Pedir para desenhar um relógio marcando um horário específico.</p>
 
 <button class="proximo" onclick="nextStep('testes')">Voltar</button>
 
 </div>
-
 
 <div class="card" id="fluencia">
 
@@ -246,7 +263,6 @@ Continuar avaliação
 <button class="proximo" onclick="nextStep('testes')">Voltar</button>
 
 </div>
-
 
 <div class="card" id="pfeffer">
 
@@ -265,20 +281,65 @@ Continuar avaliação
 
 </div>
 
-
 <div class="card" id="interpretacao">
 
 <h3>Testes alterados?</h3>
 
-<button class="sim">SIM</button>
+<button class="sim" onclick="nextStep('diagnostico')">SIM</button>
 
-<button class="nao">NÃO</button>
-
-</div>
-
+<button class="nao" onclick="nextStep('diagnostico')">NÃO</button>
 
 </div>
 
+<div class="card" id="diagnostico">
+
+<h3>Rumo Diagnóstico</h3>
+
+<p>
+Após avaliação clínica, investigação de causas reversíveis e aplicação
+dos testes cognitivos e funcionais, deve-se considerar o diagnóstico
+diferencial das principais demências.
+</p>
+
+<h4>Doença de Alzheimer</h4>
+
+<ul>
+<li>Início insidioso</li>
+<li>Perda de memória recente predominante</li>
+<li>Progressão lenta</li>
+</ul>
+
+<h4>Demência Vascular</h4>
+
+<ul>
+<li>História de AVC</li>
+<li>Evolução em "degraus"</li>
+<li>Déficits neurológicos focais</li>
+</ul>
+
+<h4>Demência por Corpos de Lewy</h4>
+
+<ul>
+<li>Flutuação cognitiva</li>
+<li>Alucinações visuais</li>
+<li>Parkinsonismo</li>
+</ul>
+
+<h4>Demência Frontotemporal (FTD)</h4>
+
+<ul>
+<li>Alteração comportamental precoce</li>
+<li>Desinibição</li>
+<li>Alteração de linguagem</li>
+</ul>
+
+<button class="proximo" onclick="nextStep('inicio')">
+Reiniciar avaliação
+</button>
+
+</div>
+
+</div>
 
 <script>
 
@@ -293,8 +354,6 @@ document.getElementById(step).classList.add("active");
 window.scrollTo(0,0);
 
 }
-
-
 
 function calcularMEEM(){
 
@@ -320,8 +379,6 @@ document.getElementById("resultadoMEEM").innerHTML=
 "<b>Pontuação:</b> "+total+"/30<br>"+texto;
 
 }
-
-
 
 function calcularPfeffer(){
 
@@ -349,4 +406,3 @@ document.getElementById("resultadoPfeffer").innerHTML=
 
 </body>
 </html>
-
